@@ -3,28 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminsController extends Controller
 {
-    public function showLoginForm(){
-        return view('admin.login');
-    }
-
-    public function login(){
-        return 123;
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
     }
 
     /**
-     * Validate the user login request.
+     * Show the application dashboard.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return void
+     * @return \Illuminate\Http\Response
      */
-    protected function validateLogin(Request $request)
+    public function index()
     {
-        $this->validate($request, [
-            $this->username() => 'required|string',
-            'password' => 'required|string',
-        ]);
-    } 
+        //$user = Auth::user();
+        //return view('admin.login')->with('user', $user);
+        return view('admin.index');
+    }
 }

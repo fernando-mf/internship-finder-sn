@@ -17,7 +17,7 @@ class PostsController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:web,admin');
     }
 
     /**
@@ -134,7 +134,9 @@ class PostsController extends Controller
         // Check for null post
         if($post == null) return redirect()->route('posts.index');
         // Check for correct user
-        if(Auth::user()->id != $post->user_id) return redirect()->route('posts.index');
+        if(Auth::user()->id != $post->user_id and !Auth::guard('admin')->check()) {
+            return redirect()->route('posts.index');
+        }
 
         // Pass existing contact or new model
         if(count($post->inside_contacts) > 0)
@@ -217,6 +219,20 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Find Post
+        $post = Post::find($id);
+
+        // Get Contact
+        $contacts = $post->inside_contacts;
+
+        if(count($contacts) > 0){
+            // Each post should only have one contact
+            $contact = $contacts[0];
+            $contact->delete();
+        }
+
+        $post->delete();
+
+        return redirect()->route('posts.index');
     }
 }

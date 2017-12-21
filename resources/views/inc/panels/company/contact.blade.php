@@ -2,7 +2,7 @@
     <div class="row">
         <span class="col-md-12 col-xs-12">
             <h4 style="text-decoration: underline;">
-                <strong>Contacts et personnes resources dans l'entreprise</strong>
+                <strong>Contacts et personnes ressources dans l'entreprise</strong>
             </h4>
         </span>
     </div>

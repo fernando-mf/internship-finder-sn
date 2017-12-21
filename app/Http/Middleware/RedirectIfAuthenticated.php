@@ -19,7 +19,13 @@ class RedirectIfAuthenticated
     {
         // Possible bug ...
         if (Auth::guard($guard)->check()) {
-            return redirect()->route('profil');
+            switch($guard){
+                case "admin":
+                    return redirect()->route('admin.profil');
+                default:
+                    return redirect()->route('profil');
+            };
+            
         }
 
         return $next($request);

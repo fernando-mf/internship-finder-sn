@@ -1,7 +1,7 @@
 @if(count($post->inside_contacts) > 0)
     <div class="panel panel-default">
         <div class="panel-heading">
-            Contact, personne resource ou superviseur de stage
+            Contact, personne ressource ou superviseur de stage
         </div>
         <div class="panel-body">
             @foreach($post->inside_contacts as $contact)

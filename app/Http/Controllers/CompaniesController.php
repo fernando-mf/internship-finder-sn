@@ -15,7 +15,7 @@ class CompaniesController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth',['except' => ['search']]);
+        $this->middleware('auth:web,admin', ['except' => ['search']]);
     }
 
     public function search($str){

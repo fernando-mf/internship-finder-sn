@@ -11,7 +11,7 @@
 			</button>
 
 			<!-- Branding Image -->
-			<a class="navbar-brand" href="{{ url('/') }}">
+			<a class="navbar-brand" href="{{ route('index') }}">
 				{{ config('app.name', 'TECCART') }}
 			</a>
 		</div>
@@ -19,29 +19,38 @@
 		<div class="collapse navbar-collapse" id="app-navbar-collapse">
 			<!-- Left Side Of Navbar -->
 			<ul class="nav navbar-nav">
-				@auth
+				@logged
 					<li>
 						<a href="{{ route('posts.index') }}">Publications</a>
 					</li>
 					<li>
 						<a href="{{ route('companies.index') }}">Milieux de stages</a>
 					</li>
-				@endauth
+				@endlogged
 			</ul>
 
 			<!-- Right Side Of Navbar -->
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Authentication Links -->
-				@guest
-				<li>
-					<a href="{{ route('login') }}">Se connecter</a>
-				</li>
-				<li>
-					<a href="{{ route('register') }}">Créer un compte</a>
-				</li>
-				@else
+				@auth('admin')
+					@include('inc.drop.admin')
+				@endauth
+
+				@auth('web')
 					@include('inc.drop.student')
-				@endguest
+				@endauth
+
+				@visitor
+					<li>
+						<a href="{{ route('admin.login') }}">Administration</a>
+					</li>
+					<li>
+						<a href="{{ route('login') }}">Se connecter</a>
+					</li>
+					<li>
+						<a href="{{ route('register') }}">Créer un compte</a>
+					</li>
+				@endvisitor
 			</ul>
 		</div>
 	</div>

@@ -31,13 +31,32 @@
         </div>
         <hr>
         @if(!Auth::guest())
-            @if(Auth::user()->id == $post->user_id)
+            @if(Auth::user()->id == $post->user_id or auth()->guard('admin')->check())
                 <a href="{{route('posts.edit', ['post' => $post->id])}}" class="btn btn-default">Éditer</a>
 
-                {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST', 'class' => 'pull-right'])!!}
-                    {{Form::hidden('_method', 'DELETE')}}
-                    {{Form::submit('Supprimer', ['class' => 'btn btn-danger'])}}
-                {!! Form::close() !!}
+                @auth('admin')
+                    <div class="pull-right">
+                        <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#smallModal">Supprimer</a>
+                    </div>
+
+                    <div class="modal fade" id="smallModal" tabindex="-1" role="dialog" aria-labelledby="smallModal" aria-hidden="true">
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel"><strong>Êtes-vous sûr de vouloir supprimer cette publication?</strong></h4>
+                                </div>
+                                <div class="modal-body text-center">
+                                    {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method' => 'POST'])!!}
+                                    {{Form::hidden('_method', 'DELETE')}}
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Non</button>
+                                    {{Form::submit('Oui', ['class' => 'btn btn-danger'])}}
+                                    {!! Form::close() !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endauth
             @endif
         @endif
     </div>

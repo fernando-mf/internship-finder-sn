@@ -25,8 +25,10 @@ Route::prefix('company')->group(function () {
 // User Auth
 Auth::routes();
 
-// Admin Auth
+
 Route::prefix('admin')->group(function () {
-    Route::get('/login', 'AdminsController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'CompaniesController@show');
+    Route::get('/', 'AdminsController@index')->name('admin.profil');
+    // Admin Auth
+    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\AdminLoginController@login');
 });

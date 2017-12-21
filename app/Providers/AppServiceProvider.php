@@ -15,6 +15,14 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        \Blade::if('logged', function () {
+            return auth()->guard('admin')->check() or auth()->guard('web')->check();
+        });
+
+        \Blade::if('visitor', function () {
+            return !(auth()->guard('admin')->check() or auth()->guard('web')->check());
+        });
     }
 
     /**
