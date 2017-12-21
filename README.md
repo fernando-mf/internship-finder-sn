@@ -7,7 +7,7 @@ d'études ainsi que les milieux de stage publiées par les anciens étudiants.
 
 ### Prerequisites
 
-[Composer](https://getcomposer.org/download/)
+[Composer](https://getcomposer.org/download/)  
 [NPM](https://www.npmjs.com/)
 
 ### Running
@@ -32,7 +32,3 @@ npm run dev
 ## Auteur
 
 * **Fernando MF**
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
