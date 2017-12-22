@@ -2,7 +2,11 @@
 
 @section('content')
     @include('inc.errors')
-    <h2 class="text-center">Modifiez votre publication</h2>
+    @auth('admin')
+        <h2 class="text-center main">Modifiez cette publication</h2>
+    @else
+        <h2 class="text-center main">Modifiez votre publication</h2>
+    @endauth
     <br>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">

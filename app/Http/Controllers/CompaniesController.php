@@ -15,6 +15,7 @@ class CompaniesController extends Controller
      */
     public function __construct()
     {
+        //$this->middleware('auth:web', ['except' => ['search', 'create']]);
         $this->middleware('auth:web,admin', ['except' => ['search']]);
     }
 
@@ -40,6 +41,12 @@ class CompaniesController extends Controller
             return redirect()->route('companies.index');
         }
 
-        return view('companies.show')->with('company', $company);
+        $divide = count($company->jobs) > 0 ? 6 : 12;
+
+        return view('companies.show')->with('company', $company)->with('divide', $divide);
+    }
+
+    public function create(Request $request){
+        return redirect()->route('index');
     }
 }

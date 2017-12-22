@@ -16,22 +16,48 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css">
 
     <link rel="shortcut icon" href="{{ asset('favicon.png') }}" type="image/png">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
+    
+    @if(Request::is('/'))
         @include('inc.navbar')
-
-        <div class="container">
-            @yield('content')
+        @yield('content')
+    @else
+        <div id="app">
+            @include('inc.navbar')
+            <div class="container">
+                @yield('content')
+            </div>
         </div>
+    @endif
 
-        @include('inc.footer')
-    </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/js/i18n/fr.js"></script>
+
+    {{--  Text Area  --}}
+    <!-- include summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#body_editor').summernote({
+                height: 200,
+                toolbar: [
+                    // [groupName, [list of button]]
+                    ['style', ['bold', 'italic', 'underline', 'clear']],
+                    ['font', ['strikethrough', 'superscript', 'subscript']],
+                    ['fontsize', ['fontsize']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['height', ['height']]
+                ]
+            });
+        });
+    </script>
 </body>
 </html>

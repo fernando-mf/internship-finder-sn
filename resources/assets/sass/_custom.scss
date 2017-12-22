@@ -6,6 +6,27 @@
     margin-right: 8px;
 }
 
-.modal-content{
+.modal-content {
     background: $body-bg;
+}
+
+#app {
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-image: url('/storage/img/header.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+// Custom Link
+.main {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+a.main:hover {
+    color: white;
 }

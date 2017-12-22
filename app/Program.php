@@ -17,4 +17,8 @@ class Program extends Model
     public function categories(){
         return $this->hasMany('App\JobCategory');
     }
+
+    public function getName(){
+        return $this->code." ".$this->name;
+    }
 }

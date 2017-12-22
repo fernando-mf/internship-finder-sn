@@ -53693,15 +53693,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 $(document).ready(function () {
     var _$$select;
 
+    $("#category").select2({
+        language: 'fr',
+        theme: 'bootstrap',
+        width: '100%'
+    });
+
     $("#company_search").select2((_$$select = {
         language: 'fr',
         theme: "bootstrap",
         width: '100%'
-    }, _defineProperty(_$$select, "language", {
+    }, _defineProperty(_$$select, 'language', {
         noResults: function noResults() {
             return "<a onclick='handle(this,event)' id='link' >Ajouter manuellement</a>";
         }
-    }), _defineProperty(_$$select, "escapeMarkup", function escapeMarkup(markup) {
+    }), _defineProperty(_$$select, 'escapeMarkup', function escapeMarkup(markup) {
         return markup;
     }), _$$select));
 

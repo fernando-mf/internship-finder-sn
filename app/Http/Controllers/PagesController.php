@@ -18,6 +18,8 @@ class PagesController extends Controller
     }
 
     public function index(){
+        // Temp
+        //return view('login');
         return view('pages.index');
     }
 }

@@ -1,4 +1,9 @@
 $(document).ready(function () {
+    $("#category").select2({
+        language: 'fr',
+        theme: 'bootstrap',
+        width: '100%'
+    });
 
     $("#company_search").select2({
         language: 'fr',

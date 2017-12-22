@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Notifications\MailResetPasswordToken;
 
 class User extends Authenticatable
 {
@@ -17,6 +18,14 @@ class User extends Authenticatable
     protected $fillable = [
         'fname', 'lname', 'email', 'password','program_id'
     ];
+
+    /**
+     * Send a password reset email to the user
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new MailResetPasswordToken($token));
+    }
 
     /**
      * The attributes that should be hidden for arrays.
@@ -33,6 +42,10 @@ class User extends Authenticatable
 
     public function posts(){
         return $this->hasMany('App\Post');
+    }
+
+    public function getName(){
+        return $this->fname." ".$this->lname;
     }
     
 }

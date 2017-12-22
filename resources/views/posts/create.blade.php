@@ -1,7 +1,7 @@
 @extends('layouts.app') 
 @section('content') 
     @include('inc.errors')
-    <h2 class="text-center">Ajouter une expérience de stage</h2>
+    <h2 class="text-center main">Ajouter une expérience de stage</h2>
     <br>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -51,7 +51,7 @@
                             </select>
                         @endcomponent
 
-                        <input type="hidden" id="up" value="" name="up">
+                        <input type="hidden" id="up" value="{{ old('up') }}" name="up">
                         
                         @component('components.control', ['c_name' => 'company', 'c_description' => 'Nom de l\'entreprise'])
                             <input id="company" type="text" class="form-control" name="company" value="{{ old('company') }}" required>

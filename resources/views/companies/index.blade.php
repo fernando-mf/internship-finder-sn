@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h2 class="">Liste des milieux de stages</h2>
+    <h2 class="main">Liste des milieux de stages</h2>
     <br>
 
     @if(count($companies) > 0)

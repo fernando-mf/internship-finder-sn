@@ -35,11 +35,39 @@
                 {!! Form::close() !!}
             @endif
         @endif  --}}
-    
-    @if(count($company->posts) > 0)
-        <h4 style="text-decoration:underline;"><strong>Publications liées à cette entreprise</strong></h4>
+
+        
+        @if(count($company->jobs) > 0)
         <div class="row">
             <div class="col-md-12">
+                <h4 style="text-decoration:underline;"><strong>Opportunités de stage</strong></h4>
+                <div class="list-group"> 
+                    @foreach($company->jobs as $job)
+                        <div class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-6 col-xs-6 text-left">
+                                    <small class="text-muted">Publié par {{$job->title}} </small>
+                                </div>
+                                <div class="col-md-6 col-xs-6 text-right">
+                                    <span class="badge text-muted">{{$job->getDateString()}}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="{{route('stages.show', ['stage' => $job->id ])}}">{{$job->title}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach 
+                </div>
+            </div>
+        </div>
+        @endif
+        
+        @if(count($company->posts) > 0)
+        <div class="row">
+            <div class="col-md-12">
+                <h4 style="text-decoration:underline;"><strong>Publications liées à cette entreprise</strong></h4>
                 <div class="list-group"> 
                     @foreach($company->posts as $post)
                         <div class="list-group-item">
@@ -60,8 +88,8 @@
                     @endforeach 
                 </div>
             </div>
-        </div>
-    @endif
-        <hr>
+         </div>
+        @endif   
+    <hr>
     </div>
 @endsection

@@ -11,24 +11,33 @@
 |
 */
 
+// Static
 Route::get('/', 'PagesController@index')->name('index');
-
-Route::resource('posts', 'PostsController');
-
 Route::get('/profil', 'ProfileController@index')->name('profil');
-
-Route::prefix('company')->group(function () {
-    Route::get('/', 'CompaniesController@index')->name('companies.index');
-    Route::get('/{company}', 'CompaniesController@show')->name('companies.show');
-});
 
 // User Auth
 Auth::routes();
 
+// Resources
+Route::resource('posts', 'PostsController');
+Route::resource('stages', 'JobController');
+
+// Prefix groups
+Route::prefix('company')->group(function () {
+    //Route::get('/create', 'CompaniesController@create')->name('companies.create');
+    Route::get('/{company}', 'CompaniesController@show')->name('companies.show');
+    Route::get('/', 'CompaniesController@index')->name('companies.index');
+});
 
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminsController@index')->name('admin.profil');
     // Admin Auth
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login');
+});
+
+Route::prefix('student')->group(function(){
+    Route::get('/', 'ProfileController@index');
+    Route::get('/update', 'UserController@edit')->name('user.edit');
+    Route::post('/update', 'UserController@update')->name('user.update');
 });

@@ -26,7 +26,9 @@ class Post extends Model
     public function getDateString(){
         //$date = Carbon::createFromFormat('Y-m-d h:i:s', $this->created_at, 'America/Montreal');
         $date = Carbon::parse($this->created_at);
-        return $date->format('m/d/Y');
+        $date->timezone = 'America/Montreal';
+        return $date->format('d/m/Y');
+        //return $date->format('m/d/Y');
     }
 
     public function getUserName(){
