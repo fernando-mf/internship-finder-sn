@@ -12,10 +12,9 @@ class AdminTableSeeder extends Seeder
      */
     public function run()
     {
+        // Create a superadmin !!
         Admin::create([
-            'name' => 'Prelt',
-            'email' => 'prelt@admin.com',
-            'password' => bcrypt('asdasd'),
+            
         ]);
     }
 }

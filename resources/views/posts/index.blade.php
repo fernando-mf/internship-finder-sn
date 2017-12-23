@@ -37,6 +37,6 @@
             {{$posts->links()}}
         </div> 
     @else
-        <p>Il n'y pas des publications pour l'instant</p>
+        <p class="main">Il n'y pas des publications pour l'instant</p>
     @endif 
 @endsection

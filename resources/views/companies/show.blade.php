@@ -22,6 +22,30 @@
             </div>
             <br>
         @endif
+
+        @if($company->address != null)
+            <div class="row">
+                <div class="col-md-12">
+                    <strong>Adresse : </strong> {{$company->address}}
+                </div>
+            </div>
+        @endif
+
+        @if($company->city != null)
+            <div class="row">
+                <div class="col-md-12">
+                   <strong>Ville : </strong> {{$company->city}}
+                </div>
+            </div>
+        @endif
+
+        @if($company->postal_code != null)
+            <div class="row">
+                <div class="col-md-12">
+                    <strong>Code Postal : </strong> {{$company->postal_code}}
+                </div>
+            </div>
+        @endif
         
          @include('inc.panels.company.contact')
           

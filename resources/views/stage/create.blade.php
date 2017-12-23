@@ -76,7 +76,7 @@
                         <br>
                         @component('components.control_editor', ['c_name' => 'body_editor', 'c_description' => 'Description'])
                             {{--  <textarea rows="5" id="body" class="form-control" name="body" placeholder="Décrivez le stage">{{ old('body') }}</textarea>  --}}
-                            <textarea rows="5" id="body_editor" class="form-control" name="body_editor"></textarea>
+                            <textarea rows="5" id="body_editor" class="form-control" name="body_editor">{!!old('body_editor')!!}</textarea>
                         @endcomponent
 
                     </div>

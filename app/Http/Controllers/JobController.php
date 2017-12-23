@@ -112,7 +112,9 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = Job::find($id);
+        $companies = Company::all();
+        return view('stage.edit')->with('job', $job)->with('companies', $companies);
     }
 
     /**
@@ -124,7 +126,7 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return redirect()->route('stages.index');
     }
 
     /**
@@ -135,6 +137,6 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return 123;
     }
 }

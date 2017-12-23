@@ -23,6 +23,13 @@ class AppServiceProvider extends ServiceProvider
         \Blade::if('visitor', function () {
             return !(auth()->guard('admin')->check() or auth()->guard('web')->check());
         });
+
+        \Blade::if('master', function () {
+            if(auth()->guard('admin')->check()){
+                return auth()->guard('admin')->user()->master;
+            }
+            return false;
+        });
     }
 
     /**

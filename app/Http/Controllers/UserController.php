@@ -24,9 +24,16 @@ class UserController extends Controller
             'lname' => 'required|string',
             'program' => 'required',
         ]);
+
+        $user = Auth::user();
+
+        if($request->email !== $user->email){
+            $this->validate($request, [
+                'email' => 'required|string|email|max:255|unique:users|unique:admins',
+            ]);
+        }
         
         // Update
-        $user = Auth::user();
         $user->fname = $request->name;
         $user->lname = $request->lname;
         $user->email = $request->email;

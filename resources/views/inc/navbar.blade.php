@@ -68,7 +68,7 @@
 			</button>
 			
 			<a class="navbar-brand" href="{{ route('index') }}">
-				{{ config('app.name', 'TECCART') }}
+				Stages Institut Teccart
 			</a>
 		</div>
 
@@ -89,6 +89,13 @@
 						<li>
 							<a href="{{ route('stages.create') }}">Ajouter offre de stage</a>
 						</li>
+
+						@master
+							<li>
+								<a href="{{ route('admin.create') }}">Ajouter un administrateur</a>
+							</li>
+						@endmaster
+
 					@endauth
 				@endlogged
 			</ul>
@@ -96,7 +103,16 @@
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Authentication Links -->
 				@auth('admin') 
-					@include('inc.drop.admin') 
+					<li>
+						<a href="{{ route('logout') }}" onclick="event.preventDefault();
+																document.getElementById('logout-form').submit();">
+							Se déconnecter
+						</a>
+
+						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+							{{ csrf_field() }}
+						</form>
+					</li>
 				@endauth 
 				
 				@auth('web') 

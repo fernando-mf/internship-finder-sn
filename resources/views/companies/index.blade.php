@@ -29,6 +29,6 @@
             {{$companies->links()}}
         </div> 
     @else
-        <p>Aucun résultat trouvé.</p>
+        <p class="main">Aucun résultat trouvé.</p>
     @endif 
 @endsection

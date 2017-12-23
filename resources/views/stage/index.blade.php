@@ -39,6 +39,6 @@
             {{$jobs->links()}}
         </div> 
     @else
-        <p>Aucune offre de stage trouvée.</p>
+        <p class="main">Aucune offre de stage trouvée.</p>
     @endif 
 @endsection

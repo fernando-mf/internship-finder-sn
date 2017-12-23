@@ -14,6 +14,7 @@
 // Static
 Route::get('/', 'PagesController@index')->name('index');
 Route::get('/profil', 'ProfileController@index')->name('profil');
+Route::get('/logout', 'PagesController@logout');
 
 // User Auth
 Auth::routes();
@@ -34,6 +35,8 @@ Route::prefix('admin')->group(function () {
     // Admin Auth
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login');
+    Route::get('/create', 'AdminsController@create')->name('admin.create');
+    Route::post('/create', 'AdminsController@store')->name('admin.store');
 });
 
 Route::prefix('student')->group(function(){

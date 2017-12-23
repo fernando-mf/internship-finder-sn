@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Validation\ValidationException;
 
 class AdminLoginController extends Controller
 {
@@ -33,6 +34,10 @@ class AdminLoginController extends Controller
             // If successful, then redirect to their profile
             return redirect()->intended(route('admin.profil'));
         }
+
+        throw ValidationException::withMessages([
+            'email' => [trans('auth.failed')],
+        ]);
 
         // If unsuccessful, redirect back to the login with the form data
         return redirect()->back()->with($request->only('email'));

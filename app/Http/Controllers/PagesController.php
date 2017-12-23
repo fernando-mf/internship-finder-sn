@@ -22,4 +22,8 @@ class PagesController extends Controller
         //return view('login');
         return view('pages.index');
     }
+
+    public function logout(){
+        return redirect()->route('index');
+    }
 }
