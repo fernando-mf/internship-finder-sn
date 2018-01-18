@@ -103,7 +103,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<!-- Authentication Links -->
 				@auth('admin') 
-					<li>
+					{{--  <li>
 						<a href="{{ route('logout') }}" onclick="event.preventDefault();
 																document.getElementById('logout-form').submit();">
 							Se déconnecter
@@ -112,7 +112,8 @@
 						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 							{{ csrf_field() }}
 						</form>
-					</li>
+					</li>  --}}
+					@include('inc.drop.admin')
 				@endauth 
 				
 				@auth('web') 

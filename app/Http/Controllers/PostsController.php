@@ -38,6 +38,9 @@ class PostsController extends Controller
      */
     public function create()
     {
+        if(auth()->guard('admin')->check()){
+            return redirect()->route('posts.index');
+        }
         $companies = Company::all();
         return view('posts.create')->with('companies', $companies);
     }

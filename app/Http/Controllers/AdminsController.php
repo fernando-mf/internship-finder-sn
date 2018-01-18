@@ -27,8 +27,24 @@ class AdminsController extends Controller
     {
         //$user = Auth::user();
         //return view('admin.login')->with('user', $user);
-        return redirect()->route('index');
+        //return redirect()->route('index');
         return view('admin.index');
+    }
+
+    public function resetPasswordForm(){
+        return view("admin.resetpass");
+    }
+
+    public function resetPassword(Request $request){
+        $this->validate($request, [
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        $admin = Auth::user();
+        $admin->password = bcrypt($request->password);
+        $admin->save();
+
+        return redirect()->route('admin.profil');
     }
 
     public function create(Request $request){

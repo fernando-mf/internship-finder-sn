@@ -6,11 +6,13 @@
             <h2 class="main">Toutes les publications</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-12 col-xs-12">
-            <a href="{{route('posts.create')}}" class="btn main">Ajouter votre expérience de stage</a>
+    @auth('web')
+        <div class="row">
+            <div class="col-md-12 col-xs-12">
+                <a href="{{route('posts.create')}}" class="btn main">Ajouter votre expérience de stage</a>
+            </div>
         </div>
-    </div>
+    @endauth
     <br>
 
     @if(count($posts) > 0)

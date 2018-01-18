@@ -33,6 +33,8 @@ Route::prefix('company')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/', 'AdminsController@index')->name('admin.profil');
     // Admin Auth
+    Route::get('/reset-password', 'AdminsController@resetPasswordForm')->name('admin.reset-password');
+    Route::post('/reset-password', 'AdminsController@resetPassword');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login');
     Route::get('/create', 'AdminsController@create')->name('admin.create');
