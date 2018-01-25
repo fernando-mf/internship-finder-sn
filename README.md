@@ -1,9 +1,9 @@
-# Gestion d'offres de stage - Institut Teccart
+# Gestion d'offres de stage - Recherche de stage
 
-Cette application permettra à l'administration de l'Institut Teccart de mieux gérer les offres de stage.
+Cette application permettra à l'administration des établissements d'enseignement de mieux gérer les offres de stage.
 Elle permet aussi aux étudiants de publier leurs expériences de stage.
-Les étudiants des dernières sessions pourront accéder à cette application et voir tous les offres de stage pour leur programme
-d'études ainsi que les milieux de stage publiées par les anciens étudiants.
+Les étudiants aux dernières sessions pourront accéder à cette application et voir tous les offres de stage pour leur programme
+d'études ainsi qu'une liste des milieux de stage publiées par les anciens étudiants.
 
 ### Prerequisites
 
@@ -16,6 +16,12 @@ Pour éxécuter l'application
 
 ```
 php artisan serve
+```
+
+Installer les packages
+
+```
+npm install
 ```
 
 Compiler les assets
